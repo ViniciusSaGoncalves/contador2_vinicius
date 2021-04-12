@@ -1,3 +1,4 @@
+import 'package:contador2_vinicius/app/pages/Page.default.dart';
 import 'package:contador2_vinicius/app/pages/page.home.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,11 @@ class App extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: PageHome(title: 'Contador V2'),
+      initialRoute: '/',
+      routes: {
+        '/page2': (context) => PageDefault(msg: 'Pagina2', showButton: true),
+        '/page3': (context) => PageDefault(msg: 'Pagina3')
+      },
     );
   }
 }
