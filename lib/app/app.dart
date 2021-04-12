@@ -14,8 +14,16 @@ class App extends StatelessWidget {
       home: PageHome(title: 'Contador V2'),
       initialRoute: '/',
       routes: {
-        '/page2': (context) => PageDefault(msg: 'Pagina2', showButton: true),
-        '/page3': (context) => PageDefault(msg: 'Pagina3')
+        '/page2': (context) => PageDefault(
+              msg: 'Pagina2',
+              msgButton: 'Ir para page 3',
+              route: '/page3',
+            ),
+        '/page3': (context) => PageDefault(
+              msg: 'Pagina3',
+              msgButton: 'Ir para Home',
+              route: '/',
+            )
       },
     );
   }

@@ -65,6 +65,9 @@ class PageHomeState extends State<PageHome> {
                 WidgetActionButton(action: decrementCounter, label: '-1')
               ],
             ),
+            ElevatedButton(
+                onPressed: () => Navigator.pushNamed(context, '/page2'),
+                child: Text('Vá para Pagina2'))
           ],
         ),
       ),

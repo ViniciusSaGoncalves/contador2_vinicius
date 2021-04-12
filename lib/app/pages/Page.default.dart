@@ -2,20 +2,31 @@ import 'package:flutter/material.dart';
 
 class PageDefault extends StatelessWidget {
   final String msg;
-  final bool showButton;
-  const PageDefault({@required this.msg, this.showButton = true, Key key})
+  final String route;
+  final String msgButton;
+
+  const PageDefault(
+      {@required this.route,
+      @required this.msg,
+      @required this.msgButton,
+      Key key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          Text(msg),
-          if (showButton)
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(msg),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            Text(msg),
             ElevatedButton(
-                onPressed: null, child: Text('Vá para próxima página'))
-        ],
+                onPressed: () => Navigator.pushNamed(context, route),
+                child: Text(msgButton))
+          ],
+        ),
       ),
     );
   }
