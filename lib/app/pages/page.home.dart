@@ -1,3 +1,4 @@
+import 'package:contador2_vinicius/app/shared/widgets/WidgetCircleAvatarDefault.dart';
 import 'package:flutter/material.dart';
 
 class PageHome extends StatefulWidget {
@@ -11,6 +12,8 @@ class PageHome extends StatefulWidget {
 
 class _PageHomeState extends State<PageHome> {
   int _counter = 0;
+  int max = 0;
+  int min = 0;
 
   void _incrementCounter() {
     setState(() {
@@ -29,11 +32,22 @@ class _PageHomeState extends State<PageHome> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                WidgetCircleAvatarDefault(
+                  label: 'Max',
+                  value: '$max',
+                ),
+                WidgetCircleAvatarDefault(
+                  label: 'Min',
+                  value: '$min',
+                  color: Colors.red,
+                ),
+              ],
             ),
           ],
         ),
