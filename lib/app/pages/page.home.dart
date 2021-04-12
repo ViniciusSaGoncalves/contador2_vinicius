@@ -1,3 +1,4 @@
+import 'package:contador2_vinicius/app/shared/widgets/WidgetActionButton.dart';
 import 'package:contador2_vinicius/app/shared/widgets/WidgetCircleAvatarDefault.dart';
 import 'package:flutter/material.dart';
 
@@ -7,17 +8,25 @@ class PageHome extends StatefulWidget {
   final String title;
 
   @override
-  _PageHomeState createState() => _PageHomeState();
+  PageHomeState createState() => PageHomeState();
 }
 
-class _PageHomeState extends State<PageHome> {
+class PageHomeState extends State<PageHome> {
   int _counter = 0;
   int max = 0;
   int min = 0;
 
-  void _incrementCounter() {
+  void incrementCounter({int value = 1}) {
     setState(() {
-      _counter++;
+      _counter += value;
+      if (_counter > max) max = _counter;
+    });
+  }
+
+  void decrementCounter({int value = 1}) {
+    setState(() {
+      _counter -= value;
+      if (_counter < min) min = _counter;
     });
   }
 
@@ -49,14 +58,16 @@ class _PageHomeState extends State<PageHome> {
                 ),
               ],
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                WidgetActionButton(action: incrementCounter, label: '+1'),
+                WidgetActionButton(action: decrementCounter, label: '-1')
+              ],
+            ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
